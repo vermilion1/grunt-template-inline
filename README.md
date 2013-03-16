@@ -37,22 +37,28 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.namespace
 Type: `String`
-Default value: `',  '`
+Default value: `'JST'`
 
-A string value that is used to do something with whatever.
+The namespace in which the precompiled templates will be assigned.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.processName
+Type: `Function`
+Default value: `null`
 
-A string value that is used to do something else with whatever else.
+This option accepts a function which takes one argument (the template filepath) and returns a string which will be used as the key for the precompiled template object.
+
+#### options.processContent
+Type: `Function`
+Default value: `null`
+
+This option accepts a function which takes one argument (the file content) and returns a string which will be used as template string.
+
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
 
 ```js
 grunt.initConfig({
@@ -66,7 +72,6 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
 
 ```js
 grunt.initConfig({
