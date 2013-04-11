@@ -25,13 +25,15 @@ In your project's Gruntfile, add a section named `template_inline` to the data o
 ```js
 grunt.initConfig({
   template_inline: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
+    all: {
+      options: {
+        // Task-specific options go here.
+      },
+      your_target: {
+        // Target-specific file lists and/or options go here.
+      }
+    }
+  }
 })
 ```
 
@@ -63,11 +65,13 @@ This option accepts a function which takes one argument (the file content) and r
 ```js
 grunt.initConfig({
   template_inline: {
-    options: {},
-    files: {
-      'dest/template.js': ['src/testing.html', 'src/123.html'],
-    },
-  },
+    all : {
+      options: {},
+      files: {
+        'dest/template.js': ['src/testing.html', 'src/123.html'],
+      }
+    }
+  }
 })
 ```
 
@@ -76,19 +80,21 @@ grunt.initConfig({
 ```js
 grunt.initConfig({
   template_inline: {
-    options: {
-      namespace: 'custom',
-      processName: function (filename) {
-        return filename.split(/src\//)[1];
+    all : {
+      options: {
+        namespace: 'custom',
+        processName: function (filename) {
+          return filename.split(/src\//)[1];
+        },
+        processContent: function (source) {
+          return 'test - ' + source;
+        }
       },
-      processContent: function (source) {
-        return 'test - ' + source;
+      files: {
+        'dest/template.js': ['src/testing.html', 'src/123.html'],
       }
-    },
-    files: {
-      'dest/template.js': ['src/testing.html', 'src/123.html'],
-    },
-  },
+    }
+  }
 })
 ```
 
